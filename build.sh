@@ -47,6 +47,9 @@ chmod +x /usr/local/bin/timeleft
 # Remove all of Ubuntu's initial motd stuff
 rm /etc/update-motd.d/*
 
+# Fix https://github.com/plushu/build-sandbox/issues/3
+sed -i 's#^\(session    optional     pam_motd\.so  motd=/run/motd\.dynamic\) noupdate$#\1#' /etc/pam.d/sshd
+
 # Create our own motd stuff
 cat >/etc/update-motd.d/00-header <<"EOF"
 #!/usr/bin/env bash
