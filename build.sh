@@ -128,6 +128,7 @@ cat /root/.ssh/authorized_keys >/home/plushu/.ssh/authorized_keys
 # Add timeleft as a simple Plushu command plugin
 mkdir -p /home/plushu/plugins/timeleft
 ln -s /usr/bin/local/timeleft /home/plushu/plugins/timeleft/command
+chown -R plushu: /home/plushu/plugins/timeleft
 
 # Install Plusku
 plushu plugins:install plusku
