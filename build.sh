@@ -125,6 +125,9 @@ cat >>/root/.ssh/authorized_keys <<<"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDE3oF
 # Give everybody with root access plushu access
 cat /root/.ssh/authorized_keys >/home/plushu/.ssh/authorized_keys
 
+# Add plugin for opts to enable tracing
+plushu plugins:install trace
+
 # Add timeleft as a simple Plushu command plugin
 mkdir -p /home/plushu/plugins/timeleft
 ln -s /usr/bin/local/timeleft /home/plushu/plugins/timeleft/command
