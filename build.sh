@@ -112,8 +112,8 @@ apt-get update
 # Install any pending updates
 apt-get upgrade
 
-# Install other dependencies
-apt-get install -y git inotify-tools
+# Install other dependencies, plus mosh
+apt-get install -y git inotify-tools mosh
 
 # Install Plushu
 git clone https://github.com/plushu/plushu /home/plushu
