@@ -148,4 +148,12 @@ plushu apps:create enter
 plushu app-docker-opts:add enter '-v /root/.ssh:/root-ssh'
 plushu app-docker-opts:add enter '-v /home/plushu/.ssh:/plushu-ssh'
 
-# And then we push enter-sandbox to finish the build.
+# At this point, we run:
+
+# plushu plugins:disable git-apps
+
+# And then we push enter-sandbox to finish the build...
+
+# after re-enabling git-apps with:
+
+# plushu plugins:enable git-apps
