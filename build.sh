@@ -112,7 +112,16 @@ apt-get update
 # Install any pending updates
 apt-get upgrade
 
-# Install other dependencies, plus mosh
+# Install other dependencies:
+# - git:
+#   - required to install plugins via Git
+#   - required for app deployment over Git
+# - inotify-tools:
+#   - optional
+#   - lets Docker-dependent Upstart units connect to docker socket as soon it
+#     becomes available
+# - mosh:
+#   - for using mosh to connect (to do root stuff) instead of SSH
 apt-get install -y git inotify-tools mosh
 
 # Install Plushu
