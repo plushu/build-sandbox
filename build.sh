@@ -159,10 +159,10 @@ plushu app-docker-opts:add enter '-v /home/plushu/.ssh:/plushu-ssh'
 
 # At this point, we run:
 
-# plushu plugins:disable git-apps
+# plushu plugins:disable start-web-deploy
 
 # And then we push enter-sandbox to finish the build...
 
-# after re-enabling git-apps with:
+# after re-enabling start-web-deploy with:
 
-# plushu plugins:enable git-apps
+# plushu plugins:enable start-web-deploy
