@@ -31,14 +31,15 @@ hours=$((timespan/3600))
 minutes=$((timespan/60%60))
 seconds=$((timespan%60))
 
-if [[ "$hours" != 0 || "$minutes" != 0 ]]; then
-  if [[ "$hours" == 1 ]]; then echo -n "1 hour"
-    elif [[ "$hours" != 0 ]]; then echo -n "$hours hours"; fi
-  if [[ "$hours" != 0 && "$minutes" != 0 ]]; then echo -n ' and '; fi
-  if [[ "$minutes" == 1 ]]; then echo -n "1 minute"
-    elif [[ "$minutes" != 0 ]]; then echo -n "$minutes minutes"; fi
-elif [[ "$seconds" == 1 ]]; then echo -n "1 second"
-else echo -n "$seconds seconds"
+if [[ "$hours" == 1 ]]; then echo -n "1 hour"
+  elif [[ "$hours" != 0 ]]; then echo -n "$hours hours"; fi
+if [[ "$hours" != 0 && "$minutes" != 0 ]]; then echo -n ' and '; fi
+if [[ "$minutes" == 1 ]]; then echo -n "1 minute"
+  elif [[ "$minutes" != 0 ]]; then echo -n "$minutes minutes"; fi
+if [[ "$hours" == 0 ]]; then
+  if [[ "$minutes" != 0 ]]; then echo -n ' and '; fi
+  if [[ "$seconds" == 1 ]]; then echo -n "1 second"
+    else echo -n "$seconds seconds"; fi
 fi
 echo
 EOF
