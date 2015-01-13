@@ -142,7 +142,7 @@ plushu plugins:install trace
 mkdir -p /home/plushu/plugins/timeleft
 cat >/home/plushu/plugins/timeleft/command <<"EOF"
 #!/usr/bin/env bash
-/usr/bin/local/timeleft
+/usr/local/bin/timeleft
 EOF
 chmod +x /home/plushu/plugins/timeleft/command
 chown -R plushu: /home/plushu/plugins/timeleft
