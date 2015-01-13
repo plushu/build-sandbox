@@ -140,7 +140,11 @@ plushu plugins:install trace
 
 # Add timeleft as a simple Plushu command plugin
 mkdir -p /home/plushu/plugins/timeleft
-ln -s /usr/bin/local/timeleft /home/plushu/plugins/timeleft/command
+cat >/home/plushu/plugins/timeleft/command <<"EOF"
+#!/usr/bin/env bash
+/usr/bin/local/timeleft
+EOF
+chmod +x /home/plushu/plugins/timeleft/command
 chown -R plushu: /home/plushu/plugins/timeleft
 
 # Install Plusku
