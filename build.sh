@@ -160,10 +160,10 @@ plushu app-docker-opts:add enter '-v /home/plushu/.ssh:/plushu-ssh'
 
 # At this point, we run:
 
-# plushu plugins:disable start-web-deploy
+# plushu plugins:disable deploy-app-local-container
 
 # And then we push enter-sandbox to finish the build...
 
-# after re-enabling start-web-deploy with:
+# after re-enabling deploy-app-local-container with:
 
-# plushu plugins:enable start-web-deploy
+# plushu plugins:enable deploy-app-local-container
