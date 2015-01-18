@@ -150,8 +150,8 @@ cat /root/.ssh/authorized_keys >/home/plushu/.ssh/authorized_keys
 plushu plugins:install trace
 
 # Add command whitelisting, whitelist some commands for plushu
-plushu plugins:install commands-whitelist
-plushu commands-whitelist timeleft reset-sandbox docker
+plushu plugins:install command-whitelist
+plushu command-whitelist timeleft reset-sandbox docker
 
 # Install Plusku
 plushu plugins:install plusku
