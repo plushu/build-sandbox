@@ -45,6 +45,17 @@ echo
 EOF
 chmod +x /usr/local/bin/timeleft
 
+# Add the `reset-sandbox` script
+cat >/usr/local/bin/reset-sandbox <<"EOF"
+#!/usr/bin/env bash
+
+url=https://reset-sandbox.plushu.org
+
+curl -iXPOST "$url/" |
+  sed -n '/^Location:[[:space:]]/{s/^[^:]*:[[:space:]]*/'"$url"'/;p;q}'
+EOF
+chmod +x /usr/local/bin/reset-sandbox
+
 # Remove all of Ubuntu's initial motd stuff
 rm /etc/update-motd.d/*
 
@@ -140,20 +151,7 @@ plushu plugins:install trace
 
 # Add command whitelisting, whitelist some commands for plushu
 plushu plugins:install commands-whitelist
-plushu commands-whitelist timeleft docker
-
-# Add a command to reset the sandbox
-mkdir -p /home/plushu/plugins/reset-sandbox
-cat >/home/plushu/plugins/reset-sandbox/command <<"EOF"
-#!/usr/bin/env bash
-
-url=https://reset-sandbox.plushu.org
-
-curl -iXPOST "$url/" |
-  sed -n '/^Location:[[:space:]]/{s/^[^:]*:[[:space:]]*/'"$url"'/;p;q}'
-EOF
-chmod +x /home/plushu/plugins/reset-sandbox/command
-chown -R plushu: /home/plushu/plugins/reset-sandbox
+plushu commands-whitelist timeleft reset-sandbox docker
 
 # Install Plusku
 plushu plugins:install plusku
