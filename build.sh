@@ -51,7 +51,7 @@ cat >/usr/local/bin/reset-sandbox <<"EOF"
 
 url=https://reset-sandbox.plushu.org
 
-curl -iXPOST "$url/" |
+curl -isSXPOST "$url/" |
   sed -n '/^Location:[[:space:]]/{s#^[^:]*:[[:space:]]*#'"$url"'#;p;q}'
 EOF
 chmod +x /usr/local/bin/reset-sandbox
