@@ -97,7 +97,7 @@ echo "  You can check the time remaining at any time with \`timeleft\`,"
 echo "  or via \`ssh plushu@sandbox.plushu.org timeleft\`."
 echo
 echo "  The server may also be reset at any time via:"
-echo "    http://reset-sandbox.plushu.org"
+echo "    https://reset-sandbox.plushu.org"
 echo
 echo "  This server can be controlled by anybody who enters a public key at:"
 echo "    http://enter.sandbox.plushu.org"
