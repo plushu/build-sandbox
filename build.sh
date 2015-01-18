@@ -138,14 +138,22 @@ cat /root/.ssh/authorized_keys >/home/plushu/.ssh/authorized_keys
 # Add plugin for opts to enable tracing
 plushu plugins:install trace
 
-# Add timeleft as a simple Plushu command plugin
-mkdir -p /home/plushu/plugins/timeleft
-cat >/home/plushu/plugins/timeleft/command <<"EOF"
+# Add command whitelisting, whitelist some commands for plushu
+plushu plugins:install commands-whitelist
+plushu commands-whitelist timeleft docker
+
+# Add a command to reset the sandbox
+mkdir -p /home/plushu/plugins/reset-sandbox
+cat >/home/plushu/plugins/reset-sandbox/command <<"EOF"
 #!/usr/bin/env bash
-/usr/local/bin/timeleft
+
+url=https://reset-sandbox.plushu.org
+
+curl -iXPOST "$url/" |
+  sed -n '/^Location:[[:space:]]/{s/^[^:]*:[[:space:]]*/'"$url"'/;p;q}'
 EOF
-chmod +x /home/plushu/plugins/timeleft/command
-chown -R plushu: /home/plushu/plugins/timeleft
+chmod +x /home/plushu/plugins/reset-sandbox/command
+chown -R plushu: /home/plushu/plugins/reset-sandbox
 
 # Install Plusku
 plushu plugins:install plusku
