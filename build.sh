@@ -116,7 +116,7 @@ EOF
 chmod +x /etc/update-motd.d/*
 
 # Get Docker
-curl -s https://get.docker.io/ubuntu/ | sh
+curl -s https://get.docker.com/ | sh
 
 # Update apt-get lists
 apt-get update
