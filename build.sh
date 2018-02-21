@@ -212,21 +212,20 @@ plushu plugins:install plusku
 # Install plugin for setting up Docker options
 plushu plugins:install app-docker-opts
 
-# This would be where we would do:
-# plushu apps:clone plushu/enter-sandbox enter
-# But we haven't added apps:clone yet, so instead we do:
+# Create app for enter.sandbox.plushu.org
 plushu apps:create enter
 
 # Set Docker options to make authorized_keys available to enter-sandbox
 plushu app-docker-opts:add enter '-v /root/.ssh:/root-ssh'
 plushu app-docker-opts:add enter '-v /home/plushu/.ssh:/plushu-ssh'
 
-# At this point, we run:
-
-# plushu plugins:disable deploy-app-local-container
-
-# And then we push enter-sandbox to finish the build...
-
-# after re-enabling deploy-app-local-container with:
-
-# plushu plugins:enable deploy-app-local-container
+# Ideally, we'd add enter.sandbox.plushu.org by simply running:
+# plushu apps:clone plushu/enter-sandbox enter
+# But we haven't added apps:clone yet, so we instead accomplish this
+# by reaching into Plushu's guts and squeezing a little:
+sudo -Hu plushu bash <<EOF
+export GIT_DIR=/home/plushu/repos/enter.git
+git fetch https://github.com/plushu/enter-sandbox.git master:master
+source /home/plushu/lib/profile.sh
+/home/plushu/plugins/git-apps/lib/build-treeish enter master
+EOF
