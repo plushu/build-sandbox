@@ -136,12 +136,65 @@ apt-get upgrade
 #   - for using mosh to connect (to do root stuff) instead of SSH
 apt-get install -y git inotify-tools mosh
 
-# Install Plushu
-git clone https://github.com/plushu/plushu /home/plushu
-/home/plushu/install.sh
+# Use the standing host keys for sandbox.plushu.org
+cat >/etc/ssh/ssh_host_dsa_key <<"_EOF_"
+-----BEGIN DSA PRIVATE KEY-----
+MIIBuwIBAAKBgQDQwAyHCcs5qjM1ja8WagcSHWvbTlbHiMITIAHZQtfSP21C/XJ8
+b7oT/Pka0+/pjHLo+yB7q3ouaRF2VTAijRoscMPlv5jQiZJTSRKre9XUPEJdbDgS
+XdJTOx3Fb89QZ6So4K0Tl5v7Oo3kwQTpO5XFZY7U0y5qxLMuaMze9wLroQIVAIwp
+GARYKF0ili61qZjWMLoxrqmHAoGAEhxR+giUyF8SFcIPu+ePL3s4uO2lR5306zUF
+uWinKFiftqCmVsfSmN5TXZ6erYg/6ptOZbqzM8gWemSNrynArjai8peIHnnMk1uK
+xmlKI0FyrjKKLUrc7CKU23exuuPSk02bVXAmz73ppZRXs1iMzbX3odV/ZwcegGO7
+gd41Q4QCgYEAp954MGNulOl929lKgMthj4lLXNoczdrkTeaQE0sDcVXkc8DkV/cd
+Ao+8Sl5AZ9AZmErNNuV1VGuu5ZOQF1rGWuPGcSOnCXfZzVRnuxC8DMXfEkC86nIe
+fpRlGIKgSKeR4izmT0JAKLNsOLOYoGhsmy5rqVnF5QZBJUER7/C7cQwCFHyzx08f
+l0aQI+7X45oMBrwxGKTe
+-----END DSA PRIVATE KEY-----
+_EOF_
+cat >/etc/ssh/ssh_host_ecdsa_key <<"_EOF_"
+-----BEGIN EC PRIVATE KEY-----
+MHcCAQEEIOwY7HlGmUjA+B9m15qWRHeGYaV8I1G2yBOitPJaBrxaoAoGCCqGSM49
+AwEHoUQDQgAEBSYPqxj5UHRh3l0KyEOWYihCmxUWhjFgp3V5ZJs8NXH96NK1Drhg
+F1zdIgb9HSPxnJV2dorJLDXiS+71BbQmJg==
+-----END EC PRIVATE KEY-----
+_EOF_
+cat >/etc/ssh/ssh_host_rsa_key <<"_EOF_"
+-----BEGIN RSA PRIVATE KEY-----
+MIIEowIBAAKCAQEAtyhtL/XlEOfVaByurCwC6yGiXYjMieUvNW0VO8auPL1NjJb1
+tx0yDfVNcPb/Pr/Vm4gN2+7PEzhCvXHCagiWN5AFMU+dzgMbmP1HErnl73f7BXxk
+BtmwHfdcQTFY/6L16jF7R1ySN20H+K9XA9ccEjQmnmudICklSFLxl+Ue0ZOb0bXW
+zyHqyt/WtTFpVqPUN/T8Eokm9me5v+NQxaCa1XobQ7qPDzsfH37kRt00PVggsjlc
+Vtq2wMf3QhldR7822uKUpY3Ihv3xfVO+zdF7pVMcdnAtU1hQpfARMUJ7/iaWan8x
+4CrFZWgKLnzSxDewQ5l2jOBws1l6T8vHz5bZvQIDAQABAoIBAC1NcIRWW8wsq5pO
+zd2EHUyvSwu7lGvfJigezQu1/s7DO/U0OZ6LOCA/tmHklgmdRWZs5pCppspoNgnJ
+o366lP01QDOML8oO9rqGmxfEp1zt3kbjF5KiMW+YCVeOrya71fuRNZ7XBMt0ym32
+YJ1wjV7rS0oP8BNOWgxjh6I8Z70KS7YF3Nqm/ZirB/cVlZsjlFi02YviZBwshJYS
+ETepWLzYGRpMiv2tmIBwMOzWUzbGNnW7X92aYkaCJj/N/H2P6JMJ2uS4TLrOVrj8
+ZGwjeM1yeDjTe37X0BUG61bmWZ5xtXbtvCDYheI9WPWVPi1Rm5rpaI9+MYnAFDzD
+nWvAsnkCgYEA89regxzDTUx5EyE6NkAUkIcoltpd2i1bk4cKrhy6dUyWmhthbLbQ
+PDA2YmPkl8cWGx7VFT6LAlYWu0z5yU9do50MwHgQws18d7q2vt513dE73l0WrfP0
+Rd+NNbKTBXhFCLe9QAsm7fHkbUb+0bUoBIIdqNXQh2jd4hFJXgUBgWsCgYEAwEes
+zJDsTbbdxJY/NBZiCsz8Pktn2W0nzl+niAGE01itFWnUlM66MdWoEDnXywh52GjR
+MM/Rnhp1ZkBLANo19Blg/s8XnDY4RJzRydIchokWPLBVKk7RwVtsCwCR0+CCpATk
+c2sBBNvqh+q18hwsLZBSFmkY7a6lchNdtUJKU3cCgYEAxR33ICTv+lwGwt/pHlFO
+TkXzGX4Kv4JKtEZE69ltH8R5OLlJV4eva/fM/luhPM9Bn0qdFD8qPwk39s+SWpg9
+KTSaSjrD0bQpGN9lOYS54kRwEJ9O5e59Vr4Od4mSLqm5pAJiiJJ7NXyDGZJ6CSpW
+3s4PC5tKpSqvsT4oAEgrn2ECgYAg/etjalZxezgQHCuaF2EZM1Twp2WZRAZ5faY0
+SvZsgSGps+/63IHMPTnKFvK07q5heJK0SmRQOX/9XHjCG674REaFUild71u2QiYo
+9/lXCDydizABw2ZwQ+yE8sMS1Mn1tLUyLKEPIWDbk2VGtpjJ9KJxH/VcCwRuT25b
+xJUWPwKBgHp/coPRrwwdnfsRmyAlRC7QHLIQoSqptg0NUxKNXRxwYxkKfh8empPN
+injZstq20vnzOYKyj58sGD24Y+SDfjrqw17EoU0ousBe8pMuwnINCqzbdANh/SUU
+O1QaBur4BSXJVIvOVT40vrkEa5ra4ZT84NVKj3K249HtHsZeI6ed
+-----END RSA PRIVATE KEY-----
+_EOF_
+for key in /etc/ssh/ssh_host_*_key; do ssh-keygen -yf "$key" >"$key.pub"; done
 
 # Add the public key used by reset-sandbox.plushu.org to warn the server
 cat >>/root/.ssh/authorized_keys <<<"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDE3oFZVm3Jcpp2DFX3DE/7GAvzbhywejEAZ7yGMs+LqJqhnE/aHLRw0JlcySjKv+iKPBuVCUfJdMcvUAq15OFEKD2dHEY9j0jG0KsD+2poQVbO6w0MkDdxHx2R49M3LydE6PYKbT6cASkaSnYcqpVYDlRdTPh1y7+QmDAqf6wmw73ln/XWVwLYEINzYdWyiQAH1tWGbRdH5OHHJUguWslyYYNx7xQmvO5ue4sQn9r/cFjw24wLp1knzmj9DCO0I+2iIv4I36BIyS8L2BZHzBLYrT9JhtjHOPhgzSjFu4choHEmCLoqwrxQWQ3QLBZTS9F7aNaNAdC0H6oB8830aB37 root@sandbox.plushu.org"
+
+# Install Plushu
+git clone https://github.com/plushu/plushu /home/plushu
+/home/plushu/install.sh
 
 # Give everybody with root access plushu access
 cat /root/.ssh/authorized_keys >/home/plushu/.ssh/authorized_keys
